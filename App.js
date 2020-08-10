@@ -1,6 +1,7 @@
 import { StatusBar } from 'expo-status-bar';
 import React from 'react';
 import { StyleSheet, Text, ScrollView, TextInput, Button } from 'react-native';
+import BlogPost from "./BlogPost";
 
 export default function App() {
 
@@ -39,6 +40,12 @@ export default function App() {
       <Text>These are you most recent posts</Text>
       <TextInput style={styles.textInput} value={text} onChangeText={setText} />
       <Button onPress={onSubmit} title="Submit" />
+      {blogPosts.map((blogPost) => (
+        <BlogPost
+          key={blogPost.id}
+          text={blogPost.text} 
+          createdAt={new Date(blogPost.createdAt)} />
+      ))}
       <StatusBar style="auto" />
     </ScrollView>
   );
