@@ -5,6 +5,15 @@ import { StyleSheet, Text, ScrollView, TextInput, Button } from 'react-native';
 export default function App() {
 
   const [text, setText] = React.useState("");
+  const [blogPosts, setBlogPosts] = React.useState([]);
+
+  React.useEffect(() => {
+    fetch("http://localhost:8080/blogs")
+    .then((data) =>  data.json())
+    .then((blogs) => {
+      setBlogPosts(blogs)
+    })
+  }, []);
 
   const onSubmit = () => {
     var blogSaving = {
@@ -20,6 +29,7 @@ export default function App() {
     })
     .then((data) => data.json())
     .then((blogs) => {
+      setBlogPosts(blogs)
     })
   };
 
