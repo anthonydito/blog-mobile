@@ -42,7 +42,7 @@ export default function App() {
       <Button onPress={onSubmit} title="Submit" />
       {blogPosts.map((blogPost) => (
         <BlogPost
-          key={blogPost.id}
+          key={blogPost._id}
           text={blogPost.text} 
           createdAt={new Date(blogPost.createdAt)} />
       ))}
